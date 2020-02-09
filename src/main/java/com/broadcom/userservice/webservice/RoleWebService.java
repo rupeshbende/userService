@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.RoleDetails;
+import com.broadcom.userservice.beans.RequestObjects.Role;
+import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
 import com.broadcom.userservice.service.RoleService;
 
 @RestController
@@ -23,23 +24,28 @@ public class RoleWebService {
 	RoleService service;
 
 	@GetMapping(value = "/{roleId}", produces = "application/json")
-	public RoleDetails getRole(@PathVariable @Positive(message = "Invalid roleId") long roleId) {
-		return null;
+	public Role getRole(@PathVariable @Positive(message = "Invalid roleId") int roleId) {
+		return service.getRole(roleId);
 	}
 	
 	@PostMapping(value = "/create", produces = "application/json")
-	RoleDetails createRole(@RequestBody RoleDetails role) {
-		return null;
+	public WebResponse createRole(@RequestBody Role role) {
+		int roleId = service.createRole(role);
+		if(roleId>0)
+			return new WebResponse(true);
+		return new WebResponse(false);
     }
  
     @PutMapping(value = "/{roleId}", produces = "application/json")
-    RoleDetails updateRole(@RequestBody RoleDetails role, @PathVariable @Positive(message = "Invalid roleId") Long roleId) {
-    	return null;
+    public WebResponse updateRole(@RequestBody Role role, @PathVariable @Positive(message = "Invalid roleId") Long roleId) {
+    	service.updateRole(role);
+    	return new WebResponse(true);
     }
  
     @DeleteMapping("/{roleId}")
-    void deleteRole(@PathVariable @Positive(message = "Invalid roleId") Long roleId) {
- 
+    public WebResponse deleteRole(@PathVariable @Positive(message = "Invalid roleId") int roleId) {
+    	service.deleteRole(roleId);
+    	return new WebResponse(true);
     }
     
 }

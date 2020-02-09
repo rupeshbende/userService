@@ -3,7 +3,6 @@ package com.broadcom.userservice.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.broadcom.userservice.beans.RequestObjects.Group;
 import com.broadcom.userservice.beans.RequestObjects.Privilege;
 import com.broadcom.userservice.dao.PrivilegeDao;
 import com.broadcom.userservice.dao.RolePrivilegesMapDao;
@@ -27,11 +26,11 @@ public class PrivilegeService {
     	privilegeDao.deletePrivilege(privilegeId);
     }
     
-    public void updateGroup(Group group) {
-    	privilegeDao.setName(group.getId(), group.getName());
+    public void updatePrivilege(Privilege privilege) {
+    	privilegeDao.setName(privilege.getId(), privilege.getName());
     }
     
-    public Privilege getGroup(int privilegeId) {
+    public Privilege getPrivilege(int privilegeId) {
 		return privilegeDao.getPrivilege(privilegeId);
 	}
 }

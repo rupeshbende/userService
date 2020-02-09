@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.UserDetails;
+import com.broadcom.userservice.beans.RequestObjects.User;
+import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
 import com.broadcom.userservice.service.UserService;
 
 @RestController
@@ -25,47 +26,57 @@ public class UserWebService {
 	UserService service;
 	
 	@GetMapping(value = "/{userId}", produces = "application/json")
-	public UserDetails getUser(@PathVariable @Positive(message = "Invalid userId") long userId) {
-		return null;
+	public User getUser(@PathVariable @Positive(message = "Invalid userId") long userId) {
+		return service.getUser(userId);
 	}
 	
 	@PostMapping(value = "/create", produces = "application/json")
-    UserDetails createUser(@RequestBody UserDetails user) {
-		return null;
+    public WebResponse createUser(@RequestBody User user) {
+		long userId = service.createUser(user);
+		if(userId>0)
+			return new WebResponse(true);
+		return new WebResponse(false);
     }
  
     @PutMapping(value = "/{userId}", produces = "application/json")
-    UserDetails updateUser(@RequestBody UserDetails user, @PathVariable @Positive(message = "Invalid userId") Long userId) {
-    	return null;
+    public WebResponse updateUser(@RequestBody User user, @PathVariable @Positive(message = "Invalid userId") Long userId) {
+    	service.updateUser(user);
+    	return new WebResponse(true);
     }
  
     @DeleteMapping("/{userId}")
-    void deleteUser(@PathVariable @Positive(message = "Invalid userId") Long userId) {
- 
+    public WebResponse deleteUser(@PathVariable @Positive(message = "Invalid userId") Long userId) {
+    	service.deleteUser(userId);
+    	return new WebResponse(true);
     }
     
     @GetMapping(value ="/groups/{userId}", produces = "application/json")
     List<String> getGroups(){
+    	//TODO get groups
     	return null;
     }
 
     @GetMapping(value ="/roles/{userId}", produces = "application/json")
     List<String> getRolesByUserId(@PathVariable @Positive(message = "Invalid userId") Long userId){
+    	//TODO get roles
     	return null;
     }
 
     @GetMapping(value ="/roles/{email}", produces = "application/json")
     List<String> getRolesByUserEmail(){
+    	//TODO get Roles
     	return null;
     }
 
     @GetMapping(value ="/privileges/{userId}", produces = "application/json")
     List<String> getPrivilegesbyUserId(@PathVariable @Positive(message = "Invalid userId") Long userId){
+    	//TODO get Privileges
     	return null;
     }
     
     @GetMapping(value ="/privileges/{email}", produces = "application/json")
     List<String> getPrivilegesByUserEmail(){
+    	//TODO get privileges
     	return null;
     }
     

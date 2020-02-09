@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.PrivilegeDetails;
+import com.broadcom.userservice.beans.RequestObjects.Privilege;
+import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
 import com.broadcom.userservice.service.PrivilegeService;
 
 @RestController
@@ -23,22 +24,27 @@ public class PrivilegeWebService {
 	PrivilegeService service;
 	
 	@GetMapping(value = "/{privilegeId}", produces = "application/json")
-	public PrivilegeDetails getPrivilege(@PathVariable @Positive(message = "Invalid privilegeId") long privilegeId) {
-		return null;
+	public Privilege getPrivilege(@PathVariable @Positive(message = "Invalid privilegeId") int privilegeId) {
+		return service.getPrivilege(privilegeId);
 	}
 	
 	@PostMapping(value = "/create", produces = "application/json")
-	PrivilegeDetails createPrivilege(@RequestBody PrivilegeDetails privilege) {
-		return null;
+	public WebResponse createPrivilege(@RequestBody Privilege privilege) {
+		int privelegeId = service.createPrivilege(privilege);
+		if(privelegeId>0)
+			return new WebResponse(true);
+		return new WebResponse(false);
     }
  
     @PutMapping(value = "/{privilegeId}", produces = "application/json")
-    PrivilegeDetails updatePrivilege(@RequestBody PrivilegeDetails privilege, @PathVariable @Positive(message = "Invalid privilegeId") Long privilegeId) {
-    	return null;
+    public WebResponse updatePrivilege(@RequestBody Privilege privilege, @PathVariable @Positive(message = "Invalid privilegeId") Long privilegeId) {
+    	service.updatePrivilege(privilege);
+    	return new WebResponse(true);
     }
  
     @DeleteMapping("/{privilegeId}")
-    void deletePrivilege(@PathVariable @Positive(message = "Invalid privilegeId") Long privilegeId) {
- 
+    public WebResponse deletePrivilege(@PathVariable @Positive(message = "Invalid privilegeId") int privilegeId) {
+    	service.deletePrivilege(privilegeId);
+    	return new WebResponse(true);
     }
 }

@@ -1,5 +1,6 @@
 package com.broadcom.userservice.webservice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.Positive;
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.GroupDetails;
+import com.broadcom.userservice.beans.RequestObjects.Group;
+import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
 import com.broadcom.userservice.service.GroupService;
 
 @RestController
@@ -24,33 +26,44 @@ public class GroupWebService {
 	@Autowired
 	GroupService service;
 	
+	@Autowired
+	AssociationWebService associationService;
+	
 	@GetMapping(value = "/{groupId}", produces = "application/json")
-	public GroupDetails getGroup(@PathVariable @Positive(message = "Invalid groupId") long groupId) {
-		return null;
+	public Group getGroup(@PathVariable @Positive(message = "Invalid groupId") int groupId) {
+		return service.getGroup(groupId);
 	}
 	
 	@PostMapping(value = "/create", produces = "application/json")
-	GroupDetails createGroup(@RequestBody GroupDetails group) {
-		return null;
+	public WebResponse createGroup(@RequestBody Group group) {
+		int groupId = service.createGroup(group);
+		if(groupId>0)
+			return new WebResponse(true);
+		return new WebResponse(false);
     }
  
     @PutMapping(value = "/{groupId}", produces = "application/json")
-    GroupDetails updateGroup(@RequestBody GroupDetails group, @PathVariable @Positive(message = "Invalid groupId") Long groupId) {
-    	return null;
+    public WebResponse updateGroup(@RequestBody Group group, @PathVariable @Positive(message = "Invalid groupId") Long groupId) {
+    	service.updateGroup(group);
+    	return new WebResponse(true);
     }
  
     @DeleteMapping("/{groupId}")
-    void deleteGroup(@PathVariable @Positive(message = "Invalid groupId") Long groupId) {
- 
+    public WebResponse deleteGroup(@PathVariable @Positive(message = "Invalid groupId") int groupId) {
+    	service.deleteGroup(groupId);
+    	return new WebResponse(true);
     }
 
 	@GetMapping(value = "/privileges/{groupId}", produces = "application/json")
-	public List<String> getPrivileges(@PathVariable @Positive(message = "Invalid groupId") long groupId) {
+	public List<String> getPrivileges(@PathVariable @Positive(message = "Invalid groupId") int groupId) {
+		List<String> privileges = new ArrayList<>();
+		//TODO get privilegs of group
 		return null;
 	}
 	
 	@GetMapping(value = "/users/{groupId}", produces = "application/json")
 	public List<Long> getUsers(@PathVariable @Positive(message = "Invalid groupId") long groupId) {
+		//TODO get users of group
 		return null;
 	}
 	

@@ -51,7 +51,7 @@ public class AssociationService {
 	@Autowired
 	UserRoleMapDao userRoleMapDao;
 	
-	public void addUserToGroupById(AddUserToGroupByIdReq addUserToGroupByIdReq) {
+	public void addUserToGroup(AddUserToGroupByIdReq addUserToGroupByIdReq) {
 		userGroupMapDao.addUserToGroup(addUserToGroupByIdReq.getUserId(), addUserToGroupByIdReq.getGroupId());
 	}
 	

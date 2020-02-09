@@ -31,7 +31,7 @@ public class UserService {
 		return user.getId();
 	}
 	
-    public void deleteUser(int userId) {
+    public void deleteUser(long userId) {
     	userRoleMapDao.deleteUserRoleMappingByUserId(userId);
     	userGroupMapDao.deleteUserGroupMappingByUserId(userId);
     	List<Integer> groups = userGroupMapDao.getUserGroups(userId);
