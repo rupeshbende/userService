@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Group {
+	int id;
 	User admin;
 	List<User> users;
 	List<Role> roles;
