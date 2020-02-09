@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.constraints.Positive;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.broadcom.userservice.beans.Group;
+import com.broadcom.userservice.service.GroupService;
 
 @RestController
 @RequestMapping("/group")
 public class GroupWebService {
+	
+	@Autowired
+	GroupService service;
 	
 	@GetMapping(value = "/{groupId}", produces = "application/json")
 	public Group getGroup(@PathVariable @Positive(message = "Invalid groupId") long groupId) {

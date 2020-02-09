@@ -1,5 +1,6 @@
 package com.broadcom.userservice.webservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,11 +11,15 @@ import com.broadcom.userservice.beans.RequestObjects.AddRoleToGroupReq;
 import com.broadcom.userservice.beans.RequestObjects.AddRoleToUserReq;
 import com.broadcom.userservice.beans.RequestObjects.AddUserToGroupReq;
 import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
+import com.broadcom.userservice.service.AssociationService;
 
 @RestController
 @RequestMapping("/associate")
 public class AssociationWebService {
 
+	@Autowired
+	AssociationService service;
+	
 	@PostMapping(value = "/usertogroup", produces = "application/json")
     WebResponse addUserToGroup(@RequestBody AddUserToGroupReq req) {
 		return null;
