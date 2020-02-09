@@ -1,22 +1,21 @@
 package com.broadcom.userservice.beans.RequestObjects;
 
 public class AddUserToGroupReq {
-	long userId;
-	int groupId;
-	
-	public AddUserToGroupReq(long userId, int groupId) {
+	String email;
+	String group;
+	public AddUserToGroupReq(String email, String group) {
 		super();
-		this.userId = userId;
-		this.groupId = groupId;
+		this.email = email;
+		this.group = group;
 	}
-	public long getUserId() {
-		return userId;
+	public String getEmail() {
+		return email;
 	}
-	public int getGroupId() {
-		return groupId;
+	public String getGroup() {
+		return group;
 	}
 	@Override
 	public String toString() {
-		return "AddUserToGroupReq [userId=" + userId + ", groupId=" + groupId + "]";
-	}	
+		return "AddUserToGroupReq [email=" + email + ", group=" + group + "]";
+	}
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.Role;
+import com.broadcom.userservice.beans.RoleDetails;
 import com.broadcom.userservice.service.RoleService;
 
 @RestController
@@ -23,17 +23,17 @@ public class RoleWebService {
 	RoleService service;
 
 	@GetMapping(value = "/{roleId}", produces = "application/json")
-	public Role getRole(@PathVariable @Positive(message = "Invalid roleId") long roleId) {
+	public RoleDetails getRole(@PathVariable @Positive(message = "Invalid roleId") long roleId) {
 		return null;
 	}
 	
 	@PostMapping(value = "/create", produces = "application/json")
-	Role createRole(@RequestBody Role role) {
+	RoleDetails createRole(@RequestBody RoleDetails role) {
 		return null;
     }
  
     @PutMapping(value = "/{roleId}", produces = "application/json")
-    Role updateRole(@RequestBody Role role, @PathVariable @Positive(message = "Invalid roleId") Long roleId) {
+    RoleDetails updateRole(@RequestBody RoleDetails role, @PathVariable @Positive(message = "Invalid roleId") Long roleId) {
     	return null;
     }
  

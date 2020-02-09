@@ -19,5 +19,5 @@ public class AddRoleToGroupReq {
 	public String toString() {
 		return "AddRoleToGroupReq [role=" + role + ", group=" + group + "]";
 	}
-	
+
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.User;
+import com.broadcom.userservice.beans.UserDetails;
 import com.broadcom.userservice.service.UserService;
 
 @RestController
@@ -25,17 +25,17 @@ public class UserWebService {
 	UserService service;
 	
 	@GetMapping(value = "/{userId}", produces = "application/json")
-	public User getUser(@PathVariable @Positive(message = "Invalid userId") long userId) {
+	public UserDetails getUser(@PathVariable @Positive(message = "Invalid userId") long userId) {
 		return null;
 	}
 	
 	@PostMapping(value = "/create", produces = "application/json")
-    User createUser(@RequestBody User user) {
+    UserDetails createUser(@RequestBody UserDetails user) {
 		return null;
     }
  
     @PutMapping(value = "/{userId}", produces = "application/json")
-    User updateUser(@RequestBody User user, @PathVariable @Positive(message = "Invalid userId") Long userId) {
+    UserDetails updateUser(@RequestBody UserDetails user, @PathVariable @Positive(message = "Invalid userId") Long userId) {
     	return null;
     }
  

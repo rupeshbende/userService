@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.Group;
+import com.broadcom.userservice.beans.GroupDetails;
 import com.broadcom.userservice.service.GroupService;
 
 @RestController
@@ -25,17 +25,17 @@ public class GroupWebService {
 	GroupService service;
 	
 	@GetMapping(value = "/{groupId}", produces = "application/json")
-	public Group getGroup(@PathVariable @Positive(message = "Invalid groupId") long groupId) {
+	public GroupDetails getGroup(@PathVariable @Positive(message = "Invalid groupId") long groupId) {
 		return null;
 	}
 	
 	@PostMapping(value = "/create", produces = "application/json")
-	Group createGroup(@RequestBody Group group) {
+	GroupDetails createGroup(@RequestBody GroupDetails group) {
 		return null;
     }
  
     @PutMapping(value = "/{groupId}", produces = "application/json")
-    Group updateGroup(@RequestBody Group group, @PathVariable @Positive(message = "Invalid groupId") Long groupId) {
+    GroupDetails updateGroup(@RequestBody GroupDetails group, @PathVariable @Positive(message = "Invalid groupId") Long groupId) {
     	return null;
     }
  

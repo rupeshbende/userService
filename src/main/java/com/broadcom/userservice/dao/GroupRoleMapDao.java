@@ -15,8 +15,8 @@ public interface GroupRoleMapDao {
     @Select("SELECT group_id FROM role_group_map WHERE role_id=#{roleId}")
     public List<Integer> getGroupsOfRole(@Param("roleId") long roleId);
 
-    @Insert("insert into role_group_map (user_id, group_id) values (#{userId}, #{groupId})")
-    public void addRoleToGroup(@Param("userId") long userId, @Param("groupId") int groupId);
+    @Insert("insert into role_group_map (role_id, group_id) values (#{roleId}, #{groupId})")
+    public void addRoleToGroup(@Param("roleId") long roleId, @Param("groupId") int groupId);
 
     @Delete("delete from role_group_map where role_id =#{roleId}")
     public void deleteRoleGroupMappingByRoleId(@Param("roleId") long roleId);

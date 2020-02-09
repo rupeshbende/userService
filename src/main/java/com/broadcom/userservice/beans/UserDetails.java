@@ -3,21 +3,21 @@ package com.broadcom.userservice.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class UserDetails {
 	long id;
 	String firstName;
 	String lastName;
 	String email;
-	List<Role> roles;
+	List<RoleDetails> roles;
 	
-	public User(String firstName, String lastName, String email) {
+	public UserDetails(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		instantiateRoles();
 	}
 	
-	public User(String email) {
+	public UserDetails(String email) {
 		this.email = email;
 		instantiateRoles();
 	}
@@ -42,7 +42,7 @@ public class User {
 		this.email = email;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(List<RoleDetails> roles) {
 		this.roles = roles;
 	}
 

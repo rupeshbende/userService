@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.Privilege;
+import com.broadcom.userservice.beans.PrivilegeDetails;
 import com.broadcom.userservice.service.PrivilegeService;
 
 @RestController
@@ -23,17 +23,17 @@ public class PrivilegeWebService {
 	PrivilegeService service;
 	
 	@GetMapping(value = "/{privilegeId}", produces = "application/json")
-	public Privilege getPrivilege(@PathVariable @Positive(message = "Invalid privilegeId") long privilegeId) {
+	public PrivilegeDetails getPrivilege(@PathVariable @Positive(message = "Invalid privilegeId") long privilegeId) {
 		return null;
 	}
 	
 	@PostMapping(value = "/create", produces = "application/json")
-	Privilege createPrivilege(@RequestBody Privilege privilege) {
+	PrivilegeDetails createPrivilege(@RequestBody PrivilegeDetails privilege) {
 		return null;
     }
  
     @PutMapping(value = "/{privilegeId}", produces = "application/json")
-    Privilege updatePrivilege(@RequestBody Privilege privilege, @PathVariable @Positive(message = "Invalid privilegeId") Long privilegeId) {
+    PrivilegeDetails updatePrivilege(@RequestBody PrivilegeDetails privilege, @PathVariable @Positive(message = "Invalid privilegeId") Long privilegeId) {
     	return null;
     }
  

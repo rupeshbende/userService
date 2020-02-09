@@ -3,12 +3,12 @@ package com.broadcom.userservice.beans;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Role {
+public class RoleDetails {
 	int id;
 	String name;
-	List<Privilege> privileges;
+	List<PrivilegeDetails> privileges;
 
-	public Role(String name, Privilege privilege) {
+	public RoleDetails(String name, PrivilegeDetails privilege) {
 		instantiatePrivileges();
 		privileges.add(privilege);
 	}
