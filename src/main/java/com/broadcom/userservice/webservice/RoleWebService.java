@@ -36,4 +36,5 @@ public class RoleWebService {
     void deleteRole(@PathVariable @Positive(message = "Invalid roleId") Long roleId) {
  
     }
+    
 }

@@ -1,5 +1,7 @@
 package com.broadcom.userservice.webservice;
 
+import java.util.List;
+
 import javax.validation.constraints.Positive;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,4 +39,14 @@ public class GroupWebService {
  
     }
 
+	@GetMapping(value = "/privileges/{groupId}", produces = "application/json")
+	public List<String> getPrivileges(@PathVariable @Positive(message = "Invalid groupId") long groupId) {
+		return null;
+	}
+	
+	@GetMapping(value = "/users/{groupId}", produces = "application/json")
+	public List<Long> getUsers(@PathVariable @Positive(message = "Invalid groupId") long groupId) {
+		return null;
+	}
+	
 }
