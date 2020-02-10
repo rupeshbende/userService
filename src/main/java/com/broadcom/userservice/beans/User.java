@@ -1,4 +1,4 @@
-package com.broadcom.userservice.beans.RequestObjects;
+package com.broadcom.userservice.beans;
 
 public class User {
 	int id;

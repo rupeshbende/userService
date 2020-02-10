@@ -1,6 +1,5 @@
 package com.broadcom.userservice.webservice;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.Positive;
@@ -15,13 +14,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.RequestObjects.Group;
-import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
+import com.broadcom.userservice.beans.Group;
+import com.broadcom.userservice.beans.Privilege;
+import com.broadcom.userservice.beans.User;
+import com.broadcom.userservice.beans.WebResponse;
 import com.broadcom.userservice.service.GroupService;
 
 @RestController
 @RequestMapping("/group")
 public class GroupWebService {
+	
+	//TODO javax validations on request objects
 	
 	@Autowired
 	GroupService service;
@@ -55,16 +58,13 @@ public class GroupWebService {
     }
 
 	@GetMapping(value = "/privileges/{groupId}", produces = "application/json")
-	public List<String> getPrivileges(@PathVariable @Positive(message = "Invalid groupId") int groupId) {
-		List<String> privileges = new ArrayList<>();
-		//TODO get privilegs of group
-		return null;
+	public List<Privilege> getPrivileges(@PathVariable @Positive(message = "Invalid groupId") int groupId) {
+		return service.getGroupPrivileges(groupId);
 	}
 	
 	@GetMapping(value = "/users/{groupId}", produces = "application/json")
-	public List<Long> getUsers(@PathVariable @Positive(message = "Invalid groupId") long groupId) {
-		//TODO get users of group
-		return null;
+	public List<User> getUsers(@PathVariable @Positive(message = "Invalid groupId") int groupId) {
+		return service.getGroupUsers(groupId);
 	}
 	
 }

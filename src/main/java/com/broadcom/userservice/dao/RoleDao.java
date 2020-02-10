@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.broadcom.userservice.beans.RequestObjects.Role;
+import com.broadcom.userservice.beans.Role;
 
 public interface RoleDao {
 

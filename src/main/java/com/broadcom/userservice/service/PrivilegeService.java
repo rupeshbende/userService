@@ -3,18 +3,18 @@ package com.broadcom.userservice.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.broadcom.userservice.beans.RequestObjects.Privilege;
-import com.broadcom.userservice.dao.PrivilegeDao;
-import com.broadcom.userservice.dao.RolePrivilegesMapDao;
+import com.broadcom.userservice.beans.Privilege;
+import com.broadcom.userservice.dao.service.PrivilegeDaoService;
+import com.broadcom.userservice.dao.service.RolePrivilegesMapDaoService;
 
 @Service
 public class PrivilegeService {
 
 	@Autowired
-	PrivilegeDao privilegeDao;
+	PrivilegeDaoService privilegeDao;
 	
 	@Autowired
-	RolePrivilegesMapDao rolePrivilegesMapDao;
+	RolePrivilegesMapDaoService rolePrivilegesMapDao;
 	
 	public int createPrivilege(Privilege privilege) {
 		privilegeDao.addPrivilege(privilege);

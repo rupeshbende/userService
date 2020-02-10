@@ -6,21 +6,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.RequestObjects.AddPrivilegeToRoleByIdReq;
-import com.broadcom.userservice.beans.RequestObjects.AddPrivilegeToRoleReq;
-import com.broadcom.userservice.beans.RequestObjects.AddRoleToGroupByIdReq;
-import com.broadcom.userservice.beans.RequestObjects.AddRoleToGroupReq;
-import com.broadcom.userservice.beans.RequestObjects.AddRoleToUserByIdReq;
-import com.broadcom.userservice.beans.RequestObjects.AddRoleToUserReq;
-import com.broadcom.userservice.beans.RequestObjects.AddUserToGroupByIdReq;
-import com.broadcom.userservice.beans.RequestObjects.AddUserToGroupReq;
-import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
+import com.broadcom.userservice.beans.AddPrivilegeToRoleByIdReq;
+import com.broadcom.userservice.beans.AddPrivilegeToRoleReq;
+import com.broadcom.userservice.beans.AddRoleToGroupByIdReq;
+import com.broadcom.userservice.beans.AddRoleToGroupReq;
+import com.broadcom.userservice.beans.AddRoleToUserByIdReq;
+import com.broadcom.userservice.beans.AddRoleToUserReq;
+import com.broadcom.userservice.beans.AddUserToGroupByIdReq;
+import com.broadcom.userservice.beans.AddUserToGroupReq;
+import com.broadcom.userservice.beans.WebResponse;
 import com.broadcom.userservice.service.AssociationService;
 
 @RestController
 @RequestMapping("/associate")
 public class AssociationWebService {
 
+	//TODO javax validations on request objects
+	
 	@Autowired
 	AssociationService service;
 	

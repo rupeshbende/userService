@@ -1,10 +1,14 @@
 package com.broadcom.userservice.beans;
 
-public class PrivilegeDetails {
+public class Role {
 	int id;
 	String name;
 	
-	public PrivilegeDetails(String name) {
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -18,7 +22,7 @@ public class PrivilegeDetails {
 
 	@Override
 	public String toString() {
-		return "Privilege [id=" + id + ", name=" + name + "]";
+		return "Role [id=" + id + ", name=" + name + "]";
 	}
 	
 }

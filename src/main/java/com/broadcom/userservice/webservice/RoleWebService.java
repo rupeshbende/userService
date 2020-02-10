@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.RequestObjects.Role;
-import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
+import com.broadcom.userservice.beans.Role;
+import com.broadcom.userservice.beans.WebResponse;
 import com.broadcom.userservice.service.RoleService;
 
 @RestController
 @RequestMapping("/role")
 public class RoleWebService {
+	
+	//TODO javax validations on request objects
 	
 	@Autowired
 	RoleService service;

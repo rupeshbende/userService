@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 public interface GroupRoleMapDao {
 
     @Select("SELECT role_id FROM role_group_map WHERE group_id=#{groupId}")
-    public List<Integer> getGroupRoles(@Param("userId") long userId);
+    public List<Integer> getGroupRoles(@Param("groupId") long groupId);
 
     @Select("SELECT group_id FROM role_group_map WHERE role_id=#{roleId}")
     public List<Integer> getGroupsOfRole(@Param("roleId") long roleId);

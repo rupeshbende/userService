@@ -1,4 +1,4 @@
-package com.broadcom.userservice.beans.ResponseObjects;
+package com.broadcom.userservice.beans;
 
 public class WebResponse {
 	String status;

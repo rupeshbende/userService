@@ -3,22 +3,22 @@ package com.broadcom.userservice.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.broadcom.userservice.beans.RequestObjects.Role;
-import com.broadcom.userservice.dao.RoleDao;
-import com.broadcom.userservice.dao.RolePrivilegesMapDao;
-import com.broadcom.userservice.dao.UserRoleMapDao;
+import com.broadcom.userservice.beans.Role;
+import com.broadcom.userservice.dao.service.RoleDaoService;
+import com.broadcom.userservice.dao.service.RolePrivilegesMapDaoService;
+import com.broadcom.userservice.dao.service.UserRoleMapDaoService;
 
 @Service
 public class RoleService {
 
 	@Autowired
-	RoleDao roleDao;
+	RoleDaoService roleDao;
 	
 	@Autowired
-	RolePrivilegesMapDao rolePrivilegesMapDao;
+	RolePrivilegesMapDaoService rolePrivilegesMapDao;
 	
 	@Autowired
-	UserRoleMapDao userRoleMapDao;
+	UserRoleMapDaoService userRoleMapDao;
 	
 	public int createRole(Role role) {
 		roleDao.addRole(role);

@@ -1,6 +1,6 @@
-package com.broadcom.userservice.beans.RequestObjects;
+package com.broadcom.userservice.beans;
 
-public class Group {
+public class Privilege {
 	int id;
 	String name;
 	
@@ -22,7 +22,7 @@ public class Group {
 
 	@Override
 	public String toString() {
-		return "Group [id=" + id + ", name=" + name + "]";
+		return "Privilege [id=" + id + ", name=" + name + "]";
 	}
 	
 }

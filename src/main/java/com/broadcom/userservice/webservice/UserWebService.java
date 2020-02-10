@@ -14,14 +14,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.RequestObjects.User;
-import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
+import com.broadcom.userservice.beans.Group;
+import com.broadcom.userservice.beans.Privilege;
+import com.broadcom.userservice.beans.Role;
+import com.broadcom.userservice.beans.User;
+import com.broadcom.userservice.beans.WebResponse;
 import com.broadcom.userservice.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserWebService {
 
+	//TODO javax validations on request objects
+	
 	@Autowired
 	UserService service;
 	
@@ -51,33 +56,30 @@ public class UserWebService {
     }
     
     @GetMapping(value ="/groups/{userId}", produces = "application/json")
-    List<String> getGroups(){
-    	//TODO get groups
-    	return null;
+    List<Group> getGroups(@PathVariable @Positive(message = "Invalid userId") Long userId){
+    	return service.getUserGroups(userId);
     }
 
     @GetMapping(value ="/roles/{userId}", produces = "application/json")
-    List<String> getRolesByUserId(@PathVariable @Positive(message = "Invalid userId") Long userId){
-    	//TODO get roles
-    	return null;
+    List<Role> getRolesByUserId(@PathVariable @Positive(message = "Invalid userId") Long userId){
+    	return service.getUserRoles(userId);
     }
 
     @GetMapping(value ="/roles/{email}", produces = "application/json")
-    List<String> getRolesByUserEmail(){
-    	//TODO get Roles
-    	return null;
+    List<Role> getRolesByUserEmail(@PathVariable String email){
+    	//TODO add email validations
+    	return service.getUserRolesByEmail(email);
     }
 
     @GetMapping(value ="/privileges/{userId}", produces = "application/json")
-    List<String> getPrivilegesbyUserId(@PathVariable @Positive(message = "Invalid userId") Long userId){
-    	//TODO get Privileges
-    	return null;
+    List<Privilege> getPrivilegesbyUserId(@PathVariable @Positive(message = "Invalid userId") Long userId){
+    	return service.getUserPrivileges(userId);
     }
     
     @GetMapping(value ="/privileges/{email}", produces = "application/json")
-    List<String> getPrivilegesByUserEmail(){
-    	//TODO get privileges
-    	return null;
+    List<Privilege> getPrivilegesByUserEmail(@PathVariable String email){
+    	//TODO Add email validations
+    	return service.getUserPrivilegesByEmail(email);
     }
     
 }

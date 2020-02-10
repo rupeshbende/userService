@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.broadcom.userservice.beans.RequestObjects.Privilege;
-import com.broadcom.userservice.beans.ResponseObjects.WebResponse;
+import com.broadcom.userservice.beans.Privilege;
+import com.broadcom.userservice.beans.WebResponse;
 import com.broadcom.userservice.service.PrivilegeService;
 
 @RestController
 @RequestMapping("/privilege")
 public class PrivilegeWebService {
 
+	//TODO javax validations on request objects
+	
 	@Autowired
 	PrivilegeService service;
 	
